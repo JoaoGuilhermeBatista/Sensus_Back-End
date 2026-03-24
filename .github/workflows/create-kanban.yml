@@ -1,0 +1,86 @@
+name: Create Kanban Project
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-kanban:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      repository-projects: write
+
+    steps:
+      - name: Create GitHub Project Kanban Board
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the repository owner node ID
+          OWNER_ID=$(gh api graphql -f query='
+            query {
+              repository(owner: "${{ github.repository_owner }}", name: "${{ github.event.repository.name }}") {
+                owner {
+                  id
+                }
+              }
+            }
+          ' --jq '.data.repository.owner.id')
+
+          echo "Owner ID: $OWNER_ID"
+
+          # Create the project
+          PROJECT_DATA=$(gh api graphql -f query='
+            mutation($ownerId: ID!, $title: String!) {
+              createProjectV2(input: {ownerId: $ownerId, title: $title}) {
+                projectV2 {
+                  id
+                  number
+                  url
+                }
+              }
+            }
+          ' -f ownerId="$OWNER_ID" -f title="Kanban - Sensus")
+
+          PROJECT_ID=$(echo "$PROJECT_DATA" | jq -r '.data.createProjectV2.projectV2.id')
+          PROJECT_NUMBER=$(echo "$PROJECT_DATA" | jq -r '.data.createProjectV2.projectV2.number')
+          PROJECT_URL=$(echo "$PROJECT_DATA" | jq -r '.data.createProjectV2.projectV2.url')
+
+          echo "Project ID: $PROJECT_ID"
+          echo "Project Number: $PROJECT_NUMBER"
+          echo "Project URL: $PROJECT_URL"
+
+          # Get the Status field ID and its options
+          FIELD_DATA=$(gh api graphql -f query='
+            query($projectId: ID!) {
+              node(id: $projectId) {
+                ... on ProjectV2 {
+                  fields(first: 20) {
+                    nodes {
+                      ... on ProjectV2SingleSelectField {
+                        id
+                        name
+                        options {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' -f projectId="$PROJECT_ID")
+
+          echo "Field data: $FIELD_DATA"
+
+          STATUS_FIELD_ID=$(echo "$FIELD_DATA" | jq -r '.data.node.fields.nodes[] | select(.name == "Status") | .id')
+          echo "Status Field ID: $STATUS_FIELD_ID"
+
+          # Update Status field options to set up Kanban columns
+          # The default options (Todo, In Progress, Done) are already created
+          # Just confirm the columns are present
+          echo "Kanban columns (Status field options):"
+          echo "$FIELD_DATA" | jq -r '.data.node.fields.nodes[] | select(.name == "Status") | .options[] | .name'
+
+          echo "✅ Kanban board created successfully!"
+          echo "🔗 Project URL: $PROJECT_URL"
