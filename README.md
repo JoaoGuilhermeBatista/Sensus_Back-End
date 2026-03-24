@@ -1,81 +1,76 @@
-# Sensus
+Sensus
+🧠 Descrição
 
+O Sensus é um projeto que utiliza inteligência artificial para analisar o ambiente em tempo real. A proposta é usar a câmera de um dispositivo de realidade estendida (XR) para capturar imagens e, a partir delas, gerar interpretações inteligentes do espaço ao redor.
 
-## Descrição
+A ideia é simples: transformar o que a câmera vê em informações úteis para o usuário, identificando objetos, obstáculos e outros elementos relevantes do ambiente.
 
-O projeto Sensus consiste no desenvolvimento de uma solução baseada em inteligência artificial para análise do ambiente em tempo real. A proposta utiliza a câmera de um dispositivo de realidade estendida como meio de captura de imagens, que são posteriormente processadas por um sistema de IA.
+💡 Este é um projeto com foco educacional, desenvolvido na disciplina de Soluções Web.
 
-O objetivo é interpretar o ambiente ao redor do usuário, identificando objetos, obstáculos e elementos relevantes, contribuindo para uma melhor compreensão do espaço. O projeto possui caráter educacional e está inserido no contexto da disciplina de Soluções Web.
+🎯 Objetivo
+Capturar imagens do ambiente usando um dispositivo com câmera
+Processar essas imagens com inteligência artificial
+Identificar elementos importantes no espaço
+Fornecer informações que ajudem o usuário a entender melhor o ambiente
+🏗️ Arquitetura do Sistema
 
----
+(Em desenvolvimento- Sera adicionado depois)
 
-## Objetivo
+🚀 Tecnologias Utilizadas
+Frontend
+JavaScript
+WebXR
+API de captura de mídia (getUserMedia)
+Backend
+Java
+Spring Boot
+API REST
+Inteligência Artificial
+Python
+Bibliotecas de visão computacional
+⚙️ Funcionamento
 
-- Capturar imagens do ambiente por meio de um dispositivo com câmera  
-- Processar essas imagens utilizando inteligência artificial  
-- Identificar elementos relevantes no ambiente  
-- Retornar informações que auxiliem o usuário na interpretação do espaço  
+O sistema funciona de forma contínua e em tempo real:
 
----
+O dispositivo XR captura imagens do ambiente
+As imagens são enviadas para o backend
+O backend se comunica com o serviço de IA
+A IA processa as imagens e identifica elementos relevantes
+As informações são retornadas e exibidas ao usuário
 
-## Arquitetura do Sistema
----
+Tudo isso acontece rapidamente, permitindo uma análise dinâmica do ambiente ao redor.
 
-## Tecnologias Utilizadas
+📁 Estrutura do Projeto
 
-### Frontend
-- JavaScript  
-- WebXR  
-- APIs de captura de mídia (getUserMedia)
+##  Organização do Desenvolvimento
 
-### Backend
-- Java  
-- Spring Boot  
-- API REST  
+O projeto Sensus está sendo desenvolvido de forma modular, com separação por branches no Git:
 
-### Inteligência Artificial
-- Python  
-- Bibliotecas de visão computacional  
+- 🌐 frontend: responsável pela interface e interação com o usuário  
+- ⚙️ backend: responsável pela lógica da aplicação e comunicação via API REST  
+- 🧠 ia: responsável pelo processamento e análise de imagens  
 
----
+A branch main concentra a versão mais estável do sistema.
 
-## Funcionamento
+Essa abordagem facilita o desenvolvimento em equipe e evita conflitos entre diferentes partes do projeto.
 
-O sistema opera a partir da captura de imagens do ambiente por meio do dispositivo XR. Essas imagens são enviadas ao backend, que realiza a comunicação com o serviço de inteligência artificial responsável pelo processamento.
+▶️ Execução
 
-A IA analisa os dados recebidos e retorna informações sobre o ambiente, que são então exibidas ao usuário. Esse processo ocorre de forma contínua, permitindo uma análise dinâmica do espaço.
+Para rodar o projeto, siga os passos:
 
----
+Inicie o backend (Java com Spring Boot)
+Inicie o serviço de IA (Python)
+Execute o frontend no navegador do dispositivo XR
+Certifique-se de que todos os serviços estão na mesma rede
+📋 Requisitos
+Dispositivo com suporte a WebXR (ex: Meta Quest)
+Ambiente Java configurado
+Ambiente Python configurado
+Conexão em rede entre os serviços
+🎓 Contexto Acadêmico
 
-## Estrutura do Projeto
----
+Este projeto foi desenvolvido como parte da disciplina de Soluções Web, com o objetivo de aplicar na prática conceitos de integração entre frontend, backend e inteligência artificial.
 
-## Execução
-
-Para execução do projeto, é necessário:
-
-1. Iniciar o backend em Java (Spring Boot)  
-2. Iniciar o serviço de IA em Python  
-3. Executar o frontend no navegador do dispositivo XR  
-4. Garantir que todos os serviços estejam na mesma rede  
-
----
-
-## Requisitos
-
-- Dispositivo com suporte a WebXR (Meta Quest)  
-- Ambiente Java configurado  
-- Ambiente Python configurado  
-- Conexão em rede entre os serviços  
-
----
-
-## Contexto Acadêmico
-
-Este projeto foi desenvolvido como parte da disciplina de Soluções Web, com o objetivo de aplicar conceitos de integração entre frontend, backend e serviços de inteligência artificial em um cenário prático.
-
----
-
-## Autores
+👨‍💻 Autores
 
 Projeto desenvolvido para fins acadêmicos.
