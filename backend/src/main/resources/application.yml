@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://postgres:5432/visaoassistiva
-    username: ${DB_USER:postgres}
-    password: ${DB_PASS:postgres}
+    username: ${DB_USER}
+    password: ${DB_PASS}
   jpa:
     hibernate:
       ddl-auto: validate
