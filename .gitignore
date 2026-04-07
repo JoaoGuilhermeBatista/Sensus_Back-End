@@ -1,0 +1,32 @@
+# Credenciais e variáveis de ambiente — NUNCA commitar
+.env
+
+# Maven build output
+backend/target/
+
+# IntelliJ IDEA
+*.iml
+*.iws
+*.ipr
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dataSources/
+.idea/dataSources.local.xml
+.idea/httpRequests/
+.idea/misc.xml
+
+# Python / ia-service
+__pycache__/
+*.py[cod]
+*.pyo
+ia-service/__pycache__/
+ia-service/*.egg-info/
+ia-service/.venv/
+ia-service/venv/
+
+# Docker volumes / logs locais
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
