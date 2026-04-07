@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 WORKDIR /app
-RUN pip install fastapi uvicorn --no-cache-dir
+RUN pip install fastapi uvicorn python-multipart --no-cache-dir
 COPY main.py .
 EXPOSE 8000
 HEALTHCHECK --interval=15s --timeout=10s --retries=3 \
